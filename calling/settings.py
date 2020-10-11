@@ -54,7 +54,7 @@ ROOT_URLCONF = 'calling.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'calling/templates'),os.path.join(BASE_DIR, 'calling/static')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

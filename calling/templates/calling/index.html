@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <title>calling</title>
+        <style>
+            body{
+                background-color: antiquewhite;
+                width: 100%;
+            }
+            a{
+                font-size: 100px;
+                background-color: blue;
+                color: white;
+                text-decoration: none;
+                padding: 25px;
+                margin:5px;
+                border-radius: 50px;
+            }
+            .main-class{
+                width: 100%;
+                display: flex;
+                flex-flow: row wrap;
+            }
+            input{
+                width: 100%;
+                height: 100px;
+                font-size: 75px;
+            }
+        </style>
+    </head>
+    <body>
+        {% if contactsList %}
+        <div class="main-class">
+            {% for contact in contactsList %}
+                <a  href="/call/{{contact.mobileNum}}">{{ contact.name }}</a>
+            {% endfor %}
+        </div>
+        <input id="myInput" value="" placeholder="Enter Phone Number">
+        <button id="myBtn" onclick="buttonClick()">Button</button>
+        <script>
+            var input = document.getElementById("myInput");
+            input.addEventListener("keyup", function(event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    location.href=`call/${input.value}`;
+                    //document.getElementById("myBtn").click();
+                }
+            });
+            function buttonClick(){
+                event.preventDefault();
+                location.href=`call/${input.value}`;
+            }
+        </script>
+        {% else %}
+            <p>No contacts are available.</p>
+        {% endif %}
+    </body>
+</html>

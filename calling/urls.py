@@ -18,6 +18,7 @@ from django.urls import path,include
 from . import views
 
 urlpatterns = [
-    path('call/<int:mobileNum>', views.homepage,name="homepage"),
+    path('',views.contacts,name="contactsList"),
+    path('call/<int:mobileNum>', views.call,name="call"),
     path('admin/', admin.site.urls),
 ]
